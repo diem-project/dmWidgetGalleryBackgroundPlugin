@@ -1,0 +1,3 @@
+[submodule "web/js/supersized"]
+	path = web/js/supersized
+	url = git://github.com/buildinternet/supersized.git
