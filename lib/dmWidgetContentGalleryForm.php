@@ -53,8 +53,15 @@ class dmWidgetContentGalleryBackgroundForm extends dmWidgetPluginForm
       $this->setDefault('method', dmConfig::get('image_resize_method', 'center'));
     }
 
-    $this->widgetSchema['show_pager'] = new sfWidgetFormInputCheckbox();
-    $this->validatorSchema['show_pager'] = new sfValidatorBoolean();
+    $this->widgetSchema['auto_start'] = new sfWidgetFormInputCheckbox();
+    $this->validatorSchema['auto_start'] = new sfValidatorBoolean();
+    if (!$this->getDefault('auto_start'))
+    {
+      $this->setDefault('auto_start', true);
+    }
+
+    $this->widgetSchema['show_controls'] = new sfWidgetFormInputCheckbox();
+    $this->validatorSchema['show_controls'] = new sfValidatorBoolean();
 
     $animations = $this->getService('i18n')->translateArray(self::$animations);
     $this->widgetSchema['animation'] = new sfWidgetFormSelect(array(
