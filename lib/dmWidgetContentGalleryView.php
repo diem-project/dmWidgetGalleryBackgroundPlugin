@@ -97,8 +97,10 @@ class dmWidgetContentGalleryBackgroundView extends dmWidgetPluginView
     $html = $helper->open('script', array('type' => 'text/javascript',
         'language' => 'javascript'));
     
+    $jsVar['options']['autostart'] = $vars['auto_start'];
     $jsVar['options']['animation'] = $vars['animation'];
     $jsVar['options']['delay']     = dmArray::get($vars, 'delay', 3);
+    $jsVar['options']['duration']     = dmArray::get($vars, 'duration', 3);
     foreach($vars['medias'] as $media)
     {
       $jsVar['medias'][] = $media['tag']->getSrc() ;
@@ -109,8 +111,9 @@ class dmWidgetContentGalleryBackgroundView extends dmWidgetPluginView
       var dmWidgetGalleryBackgroundPlugin = ' . str_replace(array('\/', '"image"'), array('/', 'image'), json_encode($jsVar)) . ';';
     
     $html .= $helper->close('script');
-    
-    $html .= '<div id="controls">
+
+    if ($vars['show_controls']) {    
+      $html .= '<div id="controls">
 			<div class="pause">pause</div>
 			<div class="play">play</div>
 			<div class="prev">prev</div>
@@ -120,6 +123,7 @@ class dmWidgetContentGalleryBackgroundView extends dmWidgetPluginView
 		</div>
 		<div id="thumbs"></div>
      ';
+    }
     
     if ($this->isCachable())
     {

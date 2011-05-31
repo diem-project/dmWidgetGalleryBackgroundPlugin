@@ -55,6 +55,11 @@ _tag('div#'.$baseTabId.'_effects',
       _tag('p.dm_help', __('Delay in seconds between transitions')).
       _tag('p.dm_help', __('Leave empty to disable transitions'))
     ).
+    _tag('li.dm_form_element.delay.clearfix',
+      $form['duration']->label(__('Effect duration'))->field()->error().
+      _tag('p.dm_help', __('Effect duration in seconds between transitions')).
+      _tag('p.dm_help', __('Leave empty to disable transitions'))
+    ).
     _tag('li.dm_form_element.auto_start.clearfix',
       $form['auto_start']->label(__('Auto start'))->field()->error().
       _tag('p.dm_help', __('Check this box to start the slideshow automatically')).

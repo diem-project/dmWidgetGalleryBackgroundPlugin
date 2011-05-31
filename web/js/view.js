@@ -13,11 +13,10 @@
     // get options from gallery metadata
     var options = dmWidgetGalleryBackgroundPlugin.options;
     
-    
     var defaultOptions = {
       containment:"body", // or "#myGalleryElement"
       timer:options.delay*1000,
-      effTimer:500,
+      effTimer:options.duration*1000,
       controls:"#controls",
       grayScale:false,
       // If your server allow directory listing
@@ -33,34 +32,8 @@
       onPrev:function(opt){}   //opt=the options relatives to this component instance
     };
     
-    
-    
     $.mbBgndGallery.buildGallery(defaultOptions);    
 
-    /*
-     if (options.animation == 'slideshow')
-    {
-      $gallery.cycle({
-        timeout:     options.delay * 1000,                      // convert to ms
-        height:      $gallery.find('img:first').attr('height'), // use first image height
-        pager:       options.pager
-      });
-    }
-    else if($dmWidgetGalleryBackgroundPlugin.animation == 'custom')
-    {
-      if ($.isFunction($.dm.customGallery))
-      {
-        $.dm.customGallery($gallery, options);
-      }
-      else
-      {
-        alert('You must create a $.dm.customGallery(element, options) function in your front.js to use custom animation');
-      }
-    }
-    else
-    {
-      alert('Unknown animation '+options.animation);
-    } */
   });
 
 })(jQuery);

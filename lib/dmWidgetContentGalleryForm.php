@@ -86,6 +86,17 @@ class dmWidgetContentGalleryBackgroundForm extends dmWidgetPluginForm
       $this->setDefault('delay', 3);
     }
 
+    $this->widgetSchema['duration'] = new sfWidgetFormInputText(array(), array('size' => 5));
+    $this->validatorSchema['duration'] = new sfValidatorNumber(array(
+      'required' => false,
+      'min' => 0,
+      'max' => 1000
+    ));
+    if (!$this->hasDefault('duration'))
+    {
+      $this->setDefault('duration', 3);
+    }
+
     $this->widgetSchema['quality'] = new sfWidgetFormInputText(array(), array('size' => 5));
     $this->validatorSchema['quality'] = new sfValidatorInteger(array(
       'required' => false,
