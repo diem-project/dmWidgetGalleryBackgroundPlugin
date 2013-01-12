@@ -9,8 +9,8 @@ class dmWidgetContentGalleryBackgroundView extends dmWidgetPluginView
     
     $this->addRequiredVar(array('medias', 'method', 'animation'));
 
-    $this->addJavascript(array('dmWidgetGalleryBackgroundPlugin.bgnd', 'dmWidgetGalleryBackgroundPlugin.view'));
-    $this->addStylesheet(array('dmWidgetGalleryBackgroundPlugin.view'));
+    $this->addJavascript(array('dmWidgetGalleryBackgroundPlugin.view', 'dmWidgetGalleryBackgroundPlugin.supersized', 'dmWidgetGalleryBackgroundPlugin.theme'));
+    $this->addStylesheet(array('dmWidgetGalleryBackgroundPlugin.view', 'dmWidgetGalleryBackgroundPlugin.supersized', 'dmWidgetGalleryBackgroundPlugin.theme'));
   }
 
   protected function filterViewVars(array $vars = array())
@@ -92,18 +92,19 @@ class dmWidgetContentGalleryBackgroundView extends dmWidgetPluginView
     
     $vars = $this->getViewVars();
     $helper = $this->getHelper();
-    $jsVar = array('options' => array(), 'medias' => array());
+    $jsVar = array('options' => array(), 'slides' => array());
     
     $html = $helper->open('script', array('type' => 'text/javascript',
         'language' => 'javascript'));
     
-    $jsVar['options']['autostart'] = $vars['auto_start'];
-    $jsVar['options']['animation'] = $vars['animation'];
-    $jsVar['options']['delay']     = dmArray::get($vars, 'delay', 3);
-    $jsVar['options']['duration']     = dmArray::get($vars, 'duration', 3);
+    $jsVar['options']['slideshow'] = 1;
+    $jsVar['options']['autoplay'] = $vars['auto_start'];
+    $jsVar['options']['transition'] = $vars['animation'];
+    $jsVar['options']['slide_interval'] = 1000 * dmArray::get($vars, 'delay', 3);
+    $jsVar['options']['transition_speed'] = 1000 * dmArray::get($vars, 'duration', 3);
     foreach($vars['medias'] as $media)
     {
-      $jsVar['medias'][] = $media['tag']->getSrc() ;
+      $jsVar['options']['slides'][] = array('image' => $media['tag']->getSrc()) ;
     }
     
     

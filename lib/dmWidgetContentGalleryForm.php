@@ -9,8 +9,14 @@ class dmWidgetContentGalleryBackgroundForm extends dmWidgetPluginForm
     'inflate' => 'Inflate'
   ),
   $animations = array(
-    'slideshow' => 'Slideshow',
-    'custom'    => 'Custom'
+    'none' => 'No animation',
+    'fade' => 'Fade effect',
+    'slideTop'    => 'Slide in from top',
+    'slideRight'  => 'Slide in from right',
+    'slideBottom' => 'Slide in from bottom',
+    'slideLeft'   => 'Slide in from left',
+    'carouselRight' => 'Carousel from right to left',
+    'carouselLeft'  => 'Carousel from left to right'
   );
 
   public function configure()
