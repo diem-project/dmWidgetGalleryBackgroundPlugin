@@ -1,13 +1,12 @@
 (function($) {
-  
+
   $('#dm_page div.dm_widget.content_gallery_background').live('dmWidgetLaunch', function()
   {
     //alert(dmWidgetGalleryBackgroundPlugin.slides.length);
 
-console.log(dmWidgetGalleryBackgroundPlugin.options);
     $(function($) {
 		// only if elements in gallery
-		if(!dmWidgetGalleryBackgroundPlugin.options.slides.length)
+		if(!dmWidgetGalleryBackgroundPlugin.options.slides || !dmWidgetGalleryBackgroundPlugin.options.slides.length)
 		{
 		  return;
 		}
@@ -18,7 +17,7 @@ console.log(dmWidgetGalleryBackgroundPlugin.options);
 		$.supersized(
 			dmWidgetGalleryBackgroundPlugin.options
 		);
-		
+
 	});
   });
 })(jQuery);
